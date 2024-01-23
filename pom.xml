@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.realisatie.realisatiesiem/com.realisatie.realisatiesiem.HelloApplication
+                            <mainClass>com.realisatie.realisatiesiem/com.realisatie.realisatiesiem.Application
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
