@@ -17,7 +17,7 @@ public class DatabaseConn {
         this.properties.setProperty("password", password);
     }
 
-    public void addConnection() {
+    private void connection() {
         String url = "jdbc:mysql://%s:%s/%s".formatted(
                 this.properties.getProperty("hostname"),
                 this.properties.getProperty("port"),
@@ -35,9 +35,22 @@ public class DatabaseConn {
         }
     }
 
+    public Connection getConnection() {
+        if(this.isConnected()) { this.connection(); }
+        return this.connection;
+    }
+
+    public boolean isConnected() {
+        try {
+            return this.connection == null || this.connection.isClosed();
+        } catch (SQLException e) {
+            return true;
+        }
+    }
+
     public ResultSet query(String query) throws SQLException {
         if (this.connection == null)
-            this.addConnection();
+            this.connection();
 
         Statement statement = this.connection.createStatement();
         return statement.executeQuery(query);

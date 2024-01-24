@@ -16,15 +16,13 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
         connection = new DatabaseConn("localhost", "8889", "HFTSystem", "root", "root");
-        connection.addConnection();
-
-        LoginScreen loginScreen = new LoginScreen();
+        connection.getConnection();
 
         scenes.put("loginscreen", new LoginScreen().getScene());
 
         mainStage = stage;
 
-        mainStage.setTitle("Login!");
+        mainStage.setTitle("Health and Fitness Tracking System!");
         mainStage.setScene(scenes.get("loginscreen"));
         mainStage.setWidth(windowSize[0]);
         mainStage.setHeight(windowSize[1]);
