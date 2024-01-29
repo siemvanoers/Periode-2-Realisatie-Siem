@@ -11,7 +11,7 @@ public class Application extends javafx.application.Application {
     public static DatabaseConn connection;
     public static Stage mainStage;
     public static HashMap<String, Scene> scenes = new HashMap<>();
-    public static int[] windowSize = {1920, 1080};
+    public static int[] windowSize = {2560, 1440};
 
     @Override
     public void start(Stage stage) throws IOException {
