@@ -6,14 +6,12 @@ import java.util.Date;
 
 public class Day {
     private Date date;
-    private User user;
     private Exercises exercises;
     private Meals meals;
     private Sleep sleep;
 
-    public Day(Date date, User user, Exercises exercises, Meals meals, Sleep sleep) {
+    public Day(Date date, Exercises exercises, Meals meals, Sleep sleep) {
         this.date = date;
-        this.user = user;
         this.exercises = exercises;
         this.meals = meals;
         this.sleep = sleep;
@@ -25,14 +23,6 @@ public class Day {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Exercises getExercises() {

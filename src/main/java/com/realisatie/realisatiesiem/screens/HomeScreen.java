@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class HomeScreen {
@@ -35,6 +36,18 @@ public class HomeScreen {
         menu.setSpacing(10);
         menu.setAlignment(Pos.CENTER);
         return menu;
+    }
+
+    public VBox sidebar() {
+        VBox sidebar = new VBox();
+        sidebar.setSpacing(10);
+        sidebar.setAlignment(Pos.CENTER);
+
+        
+
+
+
+        return sidebar;
     }
 
 

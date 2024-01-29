@@ -8,17 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 import static com.realisatie.realisatiesiem.Application.connection;
-import static com.realisatie.realisatiesiem.Application.scenes;
+
 
 public class LoginScreen {
     private final Scene scene;
@@ -31,9 +31,11 @@ public class LoginScreen {
 
 
         VBox loginform = new VBox(10);
+        loginform.setId("loginform");
         loginform.setAlignment(Pos.CENTER);
 
         Text login = new Text("Login");
+        login.setId("txtlogin");
 
         TextField username = new TextField();
         username.setPromptText("Username");
@@ -57,10 +59,10 @@ public class LoginScreen {
 
         links.getChildren().addAll(loginButton, register);
         loginform.getChildren().addAll(login, username, password, links);
-
-
         container.getChildren().add(loginform);
+
         scene = new Scene(container);
+        scene.getStylesheets().add(Application.class.getResource("stylesheets/loginscreen.css").toString());
     }
 
     private VBox getRegisterForm() {
@@ -68,6 +70,7 @@ public class LoginScreen {
         registerForm.setAlignment(Pos.CENTER);
 
         Text register = new Text("Register");
+        register.setId("txtregister");
 
         TextField firstName = new TextField();
         firstName.setPromptText("First Name");
