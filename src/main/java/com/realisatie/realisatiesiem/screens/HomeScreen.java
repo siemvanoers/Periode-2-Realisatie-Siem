@@ -43,9 +43,16 @@ public class HomeScreen {
 
     private FlowPane getLogo() {
         FlowPane logo = new FlowPane();
+        logo.setAlignment(Pos.CENTER);
         logo.setId("logo");
+
+        Text systemName = new Text("HFTSystem");
+        systemName.setId("systemname");
+
         logo.setPrefSize(navWidth, headerHeight);
         logo.setAlignment(Pos.CENTER);
+        logo.getChildren().add(systemName);
+
         return logo;
     }
 
@@ -53,6 +60,7 @@ public class HomeScreen {
         FlowPane header = new FlowPane();
         header.setId("header");
         header.setAlignment(Pos.CENTER_LEFT);
+        header.setPadding(new Insets(0, 0, 0, 50));
         header.setPrefSize(Application.windowSize[0] - navWidth, headerHeight);
 
         Text userText = new Text("Welcome: " + currentUser.getFirst_name() + " " + currentUser.getLast_name());
@@ -123,11 +131,19 @@ public class HomeScreen {
         ScrollPane container = new ScrollPane();
         container.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         container.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        Text txtMeals = new Text("MEALS");
+        txtMeals.getStyleClass().add("headertext");
+
         VBox meals = new VBox();
         meals.setId("meals");
         meals.setPrefSize(infoWidth, infoHeight);
+        meals.setSpacing(10);
         meals.setAlignment(Pos.TOP_CENTER);
+
+        meals.getChildren().add(txtMeals);
         container.setContent(meals);
+
 
 
 
@@ -156,23 +172,50 @@ public class HomeScreen {
     }
 
     private Node generateMealItem(String name, String type, int calories, int protein, int fats, int carbs) {
-        Text mealText = new Text("\nName: " + name + "\nType: " + type +
-                "\nCalories: " + calories + "\nProtein: " + protein +
-                "\nFats: " + fats + "\nCarbs: " + carbs);
+        VBox mealItem = new VBox();
+        mealItem.getStyleClass().add("items");
+        mealItem.setAlignment(Pos.CENTER);
+        mealItem.setSpacing(10);
 
-        return mealText;
+        Text nameLabel = new Text("Name: " + name);
+        nameLabel.getStyleClass().add("labels");
+
+        Text typeLabel = new Text("Type: " + type);
+        typeLabel.getStyleClass().add("labels");
+
+        Text caloriesLabel = new Text("Calories: " + calories);
+        caloriesLabel.getStyleClass().add("labels");
+
+        Text proteinLabel = new Text("Protein: " + protein);
+        proteinLabel.getStyleClass().add("labels");
+
+        Text fatsLabel = new Text("Fats: " + fats);
+        fatsLabel.getStyleClass().add("labels");
+
+        Text carbsLabel = new Text("Carbs: " + carbs);
+        carbsLabel.getStyleClass().add("labels");
+
+        mealItem.getChildren().addAll(nameLabel, typeLabel, caloriesLabel, proteinLabel, fatsLabel, carbsLabel);
+
+        return mealItem;
     }
-
 
 
     private ScrollPane getSleep() {
         ScrollPane container = new ScrollPane();
         container.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         container.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        Text txtSleep = new Text("SLEEP");
+        txtSleep.getStyleClass().add("headertext");
+
         VBox sleep = new VBox();
         sleep.setId("sleep");
         sleep.setPrefSize(infoWidth, infoHeight);
+        sleep.setSpacing(10);
         sleep.setAlignment(Pos.TOP_CENTER);
+
+        sleep.getChildren().add(txtSleep);
         container.setContent(sleep);
 
         String query = "SELECT quality, duration, sleep_date FROM sleep WHERE user_id = " + currentUser.getId();
@@ -197,21 +240,41 @@ public class HomeScreen {
     }
 
     private Node generateSleepItem(String quality, int duration, String sleepDate) {
-        Text sleepText = new Text("\nQuality: " + quality + "\nDuration: " + duration +
-                "\nDate: " + sleepDate);
+        VBox sleepItem = new VBox();
+        sleepItem.getStyleClass().add("items");
+        sleepItem.setAlignment(Pos.CENTER);
+        sleepItem.setSpacing(10);
 
-        sleepText.getStyleClass().add("sleeptext");
+        Text qualityLabel = new Text("Quality: " + quality);
+        qualityLabel.getStyleClass().add("labels");
 
-        return sleepText;
+        Text durationLabel = new Text("Duration: " + duration);
+        durationLabel.getStyleClass().add("labels");
+
+        Text sleepDateLabel = new Text("Date: " + sleepDate);
+        sleepDateLabel.getStyleClass().add("labels");
+
+        sleepItem.getChildren().addAll(qualityLabel, durationLabel, sleepDateLabel);
+
+        return sleepItem;
     }
+
 
     private ScrollPane getExercises() {
         ScrollPane container = new ScrollPane();
         container.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         container.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        Text txtExercises = new Text("EXERCISE");
+        txtExercises.getStyleClass().add("headertext");
+
         VBox exercises = new VBox();
         exercises.setId("exercises");
         exercises.setPrefSize(infoWidth, infoHeight);
+        exercises.setSpacing(10);
+        exercises.setAlignment(Pos.TOP_CENTER);
+
+        exercises.getChildren().add(txtExercises);
         container.setContent(exercises);
 
         String query = "SELECT name, muscle_group, sets, reps FROM exercise WHERE user_id = " + currentUser.getId();
@@ -237,12 +300,26 @@ public class HomeScreen {
     }
 
     private Node generateExerciseItem(String exerciseName, String muscleGroup, int sets, int reps) {
-        Text exerciseText = new Text("\nExercise: " + exerciseName + "\nMuscle Group: " + muscleGroup +
-                "\nSets: " + sets + "\nReps: " + reps);
+        VBox exerciseItem = new VBox();
+        exerciseItem.getStyleClass().add("items");
+        exerciseItem.setAlignment(Pos.CENTER);
+        exerciseItem.setSpacing(10);
 
-        exerciseText.getStyleClass().add("exercisename");
+        Text exerciseLabel = new Text("Exercise: " + exerciseName);
+        exerciseLabel.getStyleClass().add("labels");
 
-        return exerciseText;
+        Text muscleGroupLabel = new Text("Muscle Group: " + muscleGroup);
+        muscleGroupLabel.getStyleClass().add("labels");
+
+        Text setsLabel = new Text("Sets: " + sets);
+        setsLabel.getStyleClass().add("labels");
+
+        Text repsLabel = new Text("Reps: " + reps);
+        repsLabel.getStyleClass().add("labels");
+
+        exerciseItem.getChildren().addAll(exerciseLabel, muscleGroupLabel, setsLabel, repsLabel);
+
+        return exerciseItem;
     }
 
 
