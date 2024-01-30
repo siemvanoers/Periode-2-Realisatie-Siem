@@ -52,7 +52,7 @@ public class HomeScreen {
 //        header.setStyle("-fx-background-color: #0039f3;");
 
 
-        Label userLabel = new Label("User: " + currentUser.getUsername());
+        Label userLabel = new Label("User: " + currentUser.getFirst_name() + " " + currentUser.getLast_name());
         userLabel.setId("userLabel");
 
         header.getChildren().add(userLabel);

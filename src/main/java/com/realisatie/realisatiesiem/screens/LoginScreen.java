@@ -114,7 +114,7 @@ public class LoginScreen {
                 if (enteredUsername.equals(storedUsername) && enteredPassword.equals(storedPassword)) {
                     // Login successful
                     loginSuccessful = true;
-                    u = new User(storedUsername, storedPassword);
+                    u = new User(storedUsername, storedPassword, users.getString("first_name"), users.getString("last_name"));
                     break;
                 }
             }
@@ -162,7 +162,7 @@ public class LoginScreen {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        showHomeScreen(new User(username.getText(), password.getText()));
+        showHomeScreen(new User(username.getText(), password.getText(), firstName.getText(), lastName.getText()));
     }
 
     private boolean isUsernameTaken(String username) {
