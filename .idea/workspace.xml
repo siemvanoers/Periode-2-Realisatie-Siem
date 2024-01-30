@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce278ec3-6856-40d3-937e-747840dba716" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/classes/Day.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/classes/Sleep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/classes/Sleep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/classes/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/HomeScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/LoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/LoginScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/homescreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/homescreen.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +103,11 @@
       <workItem from="1706110220957" duration="40000" />
       <workItem from="1706184626311" duration="6407000" />
       <workItem from="1706533258675" duration="12196000" />
-      <workItem from="1706615315469" duration="404000" />
+      <workItem from="1706615315469" duration="557000" />
+      <workItem from="1706622829897" duration="108000" />
+      <workItem from="1706637615326" duration="23000" />
+      <workItem from="1706637651704" duration="79000" />
+      <workItem from="1706637739585" duration="4956000" />
     </task>
     <servers />
   </component>

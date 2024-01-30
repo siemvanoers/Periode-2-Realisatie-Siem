@@ -1,15 +1,16 @@
 #logo {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #e7e7e7;
 }
 
 #header, #navbar {
     -fx-background-color: #e7e7e7;
-    /*-fx-border-color: #9d9d9d;*/
-    /*-fx-border-width: 3;*/
+    -fx-border-color: #9d9d9d;
+    -fx-border-width: 2;
 }
 
 #meals, #sleep, #exercises {
     -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
     -fx-border-color: #9d9d9d;
     -fx-border-width: 5;
     -fx-border-radius: 10;
@@ -19,6 +20,22 @@
 #userinfo {
     -fx-background-image: url("../images/homescreen-background.jpg");
     /*-fx-background-repeat: stretch;*/
-
 }
+
+.scroll-bar:vertical {
+    -fx-opacity: 0;
+}
+.exercise-name {
+    -fx-fill: #00ff00; /* Set the text color to green (adjust as needed) */
+    -fx-font-size: 14px;
+}
+
+.sleeptext {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-color: #9d9d9d;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+}
+
 
