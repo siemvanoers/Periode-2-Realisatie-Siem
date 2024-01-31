@@ -18,17 +18,16 @@ import java.sql.Statement;
 
 public class HomeScreen {
     private final Scene scene;
-    private final int headerHeight = 80;
-    private final int navWidth = 200;
-    private final int infoWidth = 350;
-    private final int infoHeight = 600;
+    public final int headerHeight = 80;
+    public final int navWidth = 200;
+    public final int infoWidth = 350;
+    public final int infoHeight = 600;
     public User currentUser;
 
     public HomeScreen(User user) {
         this.currentUser = user;
         Pane root = new Pane();
         GridPane content = new GridPane();
-
 
         content.add(getLogo(), 0, 0);
         content.add(getHeader(), 1, 0);
@@ -143,9 +142,6 @@ public class HomeScreen {
 
         meals.getChildren().add(txtMeals);
         container.setContent(meals);
-
-
-
 
         String query = "SELECT name, type, calories, protein, fats, carbs FROM meal WHERE user_id = " + currentUser.getId();
 
@@ -329,6 +325,6 @@ public class HomeScreen {
     }
 
     private void showAddScreen() {
-        Application.mainStage.setScene(new AddScreen().getScene());
+        Application.mainStage.setScene(new AddScreen(currentUser).getScene());
     }
 }
