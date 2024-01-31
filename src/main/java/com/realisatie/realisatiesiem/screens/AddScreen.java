@@ -22,17 +22,39 @@ import java.time.LocalDate;
 public class AddScreen {
     private final Scene scene;
     private final User currentUser;
+    private VBox addChoiceContainer;
+
     public AddScreen(User currentUser) {
         this.currentUser = currentUser;
-        Pane root = new Pane();
-        root.getChildren().add(getAddChoice());
+        FlowPane container = new FlowPane();
+        container.setId("container");
+        container.setMinSize(Application.windowSize[0], Application.windowSize[1]);
+        container.setAlignment(Pos.CENTER);
+        FlowPane header = getHeader();
+        VBox addChoice = getAddChoice();
 
-        scene = new Scene(root, Application.windowSize[0], Application.windowSize[1]);
+        container.getChildren().addAll(header, addChoice);
+
+        scene = new Scene(container);
         scene.getStylesheets().add(Application.class.getResource("stylesheets/addscreen.css").toString());
+    }
+
+    private FlowPane getHeader() {
+        FlowPane header = new FlowPane();
+        header.setId("header");
+        header.setAlignment(Pos.TOP_CENTER);
+        header.setPrefSize(Application.windowSize[0], 80);
+
+        Text userText = new Text("Welcome: " + currentUser.getFirst_name() + " " + currentUser.getLast_name());
+        userText.setId("usertext");
+
+        header.getChildren().add(userText);
+        return header;
     }
 
     private VBox getAddChoice() {
         VBox addChoice = new VBox();
+        addChoice.setPadding(new Insets(100, 0, 0, 0));
         addChoice.setId("addchoice");
         addChoice.setAlignment(Pos.CENTER);
 
@@ -63,7 +85,7 @@ public class AddScreen {
     }
 
     private Pane addMealForm(User currentUser) {
-        VBox mealForm = new VBox();
+        VBox mealForm = new VBox(10);
         mealForm.setId("mealform");
         mealForm.setAlignment(Pos.CENTER);
 
@@ -88,7 +110,16 @@ public class AddScreen {
 
         Button sendForm = new Button("Add");
 
-        mealForm.getChildren().addAll(txtName, txtType, txtCalories, txtProtein, txtFats, txtCarbs, sendForm);
+        Button cancelForm = new Button("Back");
+        cancelForm.setOnAction(e -> {
+        });
+
+        HBox buttons = new HBox(80);
+        buttons.getChildren().addAll(sendForm, cancelForm);
+
+
+
+        mealForm.getChildren().addAll(txtName, txtType, txtCalories, txtProtein, txtFats, txtCarbs, buttons);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box
@@ -138,9 +169,9 @@ public class AddScreen {
     }
 
     private Pane addSleepForm(User currentUser) {
-        VBox sleepForm = new VBox();
+        VBox sleepForm = new VBox(8);
         sleepForm.setId("sleepform");
-        sleepForm.setAlignment(Pos.CENTER);
+        sleepForm.setAlignment(Pos.CENTER_LEFT);
 
         ComboBox<String> txtQuality = new ComboBox<>();
         txtQuality.setPromptText("Quality: ");
@@ -198,7 +229,7 @@ public class AddScreen {
     }
 
     private Pane addExerciseForm(User currentUser) {
-        VBox exerciseForm = new VBox();
+        VBox exerciseForm = new VBox(6);
         exerciseForm.setId("exerciseform");
         exerciseForm.setAlignment(Pos.CENTER);
 
