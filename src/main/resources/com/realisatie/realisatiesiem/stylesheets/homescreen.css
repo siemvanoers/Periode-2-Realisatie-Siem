@@ -9,27 +9,30 @@
 }
 
 #header {
-    -fx-border-width: 0 0 3 0; /* top right bottom left */
+    -fx-border-width: 0 0 5 0; /* top right bottom left */
     -fx-background-color: #3fb4cb;
-    -fx-border-color: #3fb4cd;
+    -fx-border-color: #000000;
 }
 
 #navbar {
-    -fx-border-width: 0 3 0 0; /* top right bottom left */
+    -fx-border-width: 0 5 0 0; /* top right bottom left */
     -fx-background-color: #3fb4cb;
-    -fx-border-color: #3fb4cd;
+    -fx-border-color: #000000;
+}
+
+#usertext {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-fill: #000000;
 }
 
 #navitems {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
+    -fx-background-color: #39a7be;
     -fx-fill: #000000;
-}
-
-#usertext {
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-fill: #000000;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
 }
 
 #meals, #sleep, #exercises {

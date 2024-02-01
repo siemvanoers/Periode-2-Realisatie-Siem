@@ -92,10 +92,10 @@ public class AddScreen {
 
         navItems.setOnMouseClicked(e -> {
             if (title.equals("Home")) {
-
+                showHomeScreen();
             }
             if (title.equals("Add")) {
-
+                showAddScreen();
             }
         });
 
@@ -109,9 +109,9 @@ public class AddScreen {
     private FlowPane getAddChoice() {
         FlowPane addChoice = new FlowPane();
         addChoice.setId("addchoice");
-        addChoice.setPadding(new Insets(350, 0, 0, 500));
+        addChoice.setPadding(new Insets(250, 0, 0, 500));
 
-        VBox buttons = new VBox();
+        VBox buttons = new VBox(5);
         buttons.setId("buttons");
         buttons.setAlignment(Pos.CENTER);
 
@@ -165,18 +165,15 @@ public class AddScreen {
         TextField txtCarbs = new TextField();
         txtCarbs.setPromptText("Carbs: ");
 
+        HBox buttons = new HBox(80);
         Button sendForm = new Button("Add");
 
         Button cancelForm = new Button("Back");
         cancelForm.setOnAction(e -> {
+            showAddScreen();
         });
 
-        HBox buttons = new HBox(80);
         buttons.getChildren().addAll(sendForm, cancelForm);
-
-
-
-        mealForm.getChildren().addAll(txtName, txtType, txtCalories, txtProtein, txtFats, txtCarbs, buttons);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box
@@ -205,6 +202,8 @@ public class AddScreen {
                 showHomeScreen();
             }
         });
+
+        mealForm.getChildren().addAll(txtName, txtType, txtCalories, txtProtein, txtFats, txtCarbs, buttons);
 
         return mealForm;
     }
@@ -240,7 +239,15 @@ public class AddScreen {
         DatePicker txtDate = new DatePicker();
         txtDate.setPromptText("Date: ");
 
+        HBox buttons = new HBox(100);
         Button sendForm = new Button("Add");
+
+        Button cancelForm = new Button("Back");
+        cancelForm.setOnAction(e -> {
+            showAddScreen();
+        });
+
+        buttons.getChildren().addAll(sendForm, cancelForm);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from combo box, text fields, and date picker
@@ -264,7 +271,7 @@ public class AddScreen {
         });
 
 
-        sleepForm.getChildren().addAll(txtQuality, txtDuration, txtDate, sendForm);
+        sleepForm.getChildren().addAll(txtQuality, txtDuration, txtDate, buttons);
 
         return sleepForm;
     }
@@ -303,7 +310,15 @@ public class AddScreen {
         TextField txtReps = new TextField();
         txtReps.setPromptText("Reps: ");
 
+        HBox buttons = new HBox(80);
         Button sendForm = new Button("Add");
+
+        Button cancelForm = new Button("Back");
+        cancelForm.setOnAction(e -> {
+            showAddScreen();
+        });
+
+        buttons.getChildren().addAll(sendForm, cancelForm);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box
@@ -328,7 +343,7 @@ public class AddScreen {
             }
         });
 
-        exerciseForm.getChildren().addAll(txtName, txtMuscleGroup, txtSets, txtReps, sendForm);
+        exerciseForm.getChildren().addAll(txtName, txtMuscleGroup, txtSets, txtReps, buttons);
 
         return exerciseForm;
     }
@@ -363,6 +378,9 @@ public class AddScreen {
 
     private void showHomeScreen() {
         Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
+    }
+    private void showAddScreen() {
+        Application.mainStage.setScene(new AddScreen(currentUser).getScene());
     }
 }
 

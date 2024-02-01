@@ -92,7 +92,7 @@ public class HomeScreen {
 
         navItems.setOnMouseClicked(e -> {
             if (title.equals("Home")) {
-
+                showHomeScreen();
             }
             if (title.equals("Add")) {
                 showAddScreen();
@@ -327,4 +327,9 @@ public class HomeScreen {
     private void showAddScreen() {
         Application.mainStage.setScene(new AddScreen(currentUser).getScene());
     }
+
+    private void showHomeScreen() {
+        Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
+    }
+
 }

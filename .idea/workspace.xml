@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ce278ec3-6856-40d3-937e-747840dba716" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/AddScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/AddScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/HomeScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/addscreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/addscreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/loginscreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/loginscreen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/homescreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/realisatie/realisatiesiem/stylesheets/homescreen.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,8 @@
       <workItem from="1706692312193" duration="914000" />
       <workItem from="1706713978176" duration="10071000" />
       <workItem from="1706724143926" duration="2636000" />
-      <workItem from="1706777667716" duration="3302000" />
+      <workItem from="1706777667716" duration="3687000" />
+      <workItem from="1706789616502" duration="2688000" />
     </task>
     <servers />
   </component>
