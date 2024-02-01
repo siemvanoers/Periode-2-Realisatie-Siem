@@ -18,10 +18,10 @@ import java.sql.Statement;
 
 public class HomeScreen {
     private final Scene scene;
-    public final int headerHeight = 80;
-    public final int navWidth = 200;
-    public final int infoWidth = 350;
-    public final int infoHeight = 600;
+    public static final int headerHeight = 80;
+    public static final int navWidth = 200;
+    public static final int infoWidth = 350;
+    public static final int infoHeight = 600;
     public User currentUser;
 
     public HomeScreen(User user) {

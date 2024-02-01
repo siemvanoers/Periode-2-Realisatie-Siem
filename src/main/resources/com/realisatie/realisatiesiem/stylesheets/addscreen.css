@@ -1,21 +1,52 @@
 #container {
-    -fx-background-color: #73b626;
+    -fx-background-color: #3fb4cb;
+}
+
+#logo {
+    -fx-background-color: #3fb4cb;
+}
+
+#systemname {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-fill: #000000;
 }
 
 #header {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #ffffff;
-    -fx-border-width: 5px;
-    -fx-padding: 10px;
+    -fx-border-width: 0 0 3 0; /* top right bottom left */
+    -fx-background-color: #3fb4cb;
+    -fx-border-color: #3fb4cb;
+}
+
+#navbar {
+    -fx-border-width: 0 3 0 0; /* top right bottom left */
+    -fx-background-color: #3fb4cb;
+    -fx-border-color: #3fb4cb;
+}
+
+#navitems {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: #000000;
 }
 
 #addchoice {
+    -fx-background-image: url("../images/homescreen-background.jpg");
+}
+
+#buttons {
     -fx-background-color: #ffffff;
-    -fx-background-radius: 15px;
-    -fx-border-color: #507a1b;
+    -fx-background-radius: 10;
+    -fx-border-color: #3fb4cb;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
     -fx-padding: 10px;
-    -fx-border-radius: 10px;
-    -fx-border-width: 5px;
+}
+
+#usertext {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: #000000;
 }
 
 #mealform, #sleepform, #exerciseform {

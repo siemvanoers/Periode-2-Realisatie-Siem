@@ -7,11 +7,9 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -19,31 +17,50 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 
+import static com.realisatie.realisatiesiem.screens.HomeScreen.headerHeight;
+import static com.realisatie.realisatiesiem.screens.HomeScreen.navWidth;
+
 public class AddScreen {
     private final Scene scene;
     private final User currentUser;
-    private VBox addChoiceContainer;
 
     public AddScreen(User currentUser) {
         this.currentUser = currentUser;
-        FlowPane container = new FlowPane();
-        container.setId("container");
-        container.setMinSize(Application.windowSize[0], Application.windowSize[1]);
-        container.setAlignment(Pos.CENTER);
-        FlowPane header = getHeader();
-        VBox addChoice = getAddChoice();
+        Pane root = new Pane();
+        GridPane content = new GridPane();
 
-        container.getChildren().addAll(header, addChoice);
+        content.add(getLogo(), 0, 0);
+        content.add(getHeader(), 1, 0);
+        content.add(getNavbar(), 0, 1);
+        content.add(getAddChoice(), 1, 1);
 
-        scene = new Scene(container);
-        scene.getStylesheets().add(Application.class.getResource("stylesheets/addscreen.css").toString());
+        root.getChildren().addAll(content);
+        scene = new Scene(root, Application.windowSize[0], Application.windowSize[1]);
+
+        scene.getStylesheets().add(Application.class.getResource("stylesheets/AddScreen.css").toString());
+    }
+
+    private FlowPane getLogo() {
+        FlowPane logo = new FlowPane();
+        logo.setAlignment(Pos.CENTER);
+        logo.setId("logo");
+
+        Text systemName = new Text("HFTSystem");
+        systemName.setId("systemname");
+
+        logo.setPrefSize(navWidth, headerHeight);
+        logo.setAlignment(Pos.CENTER);
+        logo.getChildren().add(systemName);
+
+        return logo;
     }
 
     private FlowPane getHeader() {
         FlowPane header = new FlowPane();
         header.setId("header");
-        header.setAlignment(Pos.TOP_CENTER);
-        header.setPrefSize(Application.windowSize[0], 80);
+        header.setAlignment(Pos.CENTER_LEFT);
+        header.setPadding(new Insets(0, 0, 0, 50));
+        header.setPrefSize(Application.windowSize[0] - navWidth, headerHeight);
 
         Text userText = new Text("Welcome: " + currentUser.getFirst_name() + " " + currentUser.getLast_name());
         userText.setId("usertext");
@@ -52,11 +69,51 @@ public class AddScreen {
         return header;
     }
 
-    private VBox getAddChoice() {
-        VBox addChoice = new VBox();
-        addChoice.setPadding(new Insets(100, 0, 0, 0));
+    private Pane getNavbar() {
+        FlowPane navbar = new FlowPane();
+        navbar.setId("navbar");
+        navbar.setOrientation(Orientation.HORIZONTAL);
+        navbar.setPadding(new Insets(60, 0, 0, 0));
+        navbar.setPrefSize(navWidth, Application.windowSize[1] - headerHeight);
+        navbar.getChildren().addAll(
+                generateNavItems("Home"),
+                generateNavItems("Add")
+        );
+
+        return navbar;
+    }
+
+    private FlowPane generateNavItems(String title) {
+        FlowPane navItems = new FlowPane();
+        navItems.setId("navitems");
+        navItems.setAlignment(Pos.CENTER);
+        navItems.setPrefSize(navWidth, 50);
+        navItems.setAlignment(Pos.CENTER);
+
+        navItems.setOnMouseClicked(e -> {
+            if (title.equals("Home")) {
+
+            }
+            if (title.equals("Add")) {
+
+            }
+        });
+
+
+        Text txtNavItem = new Text(title);
+        navItems.getChildren().add(txtNavItem);
+
+        return navItems;
+    }
+
+    private FlowPane getAddChoice() {
+        FlowPane addChoice = new FlowPane();
         addChoice.setId("addchoice");
-        addChoice.setAlignment(Pos.CENTER);
+        addChoice.setPadding(new Insets(350, 0, 0, 500));
+
+        VBox buttons = new VBox();
+        buttons.setId("buttons");
+        buttons.setAlignment(Pos.CENTER);
 
         Button addMeal = new Button("Add Meal");
         addMeal.setOnAction(e -> {
@@ -76,10 +133,10 @@ public class AddScreen {
             addChoice.getChildren().add(addExerciseForm(currentUser));
         });
 
+        buttons.getChildren().addAll(addMeal, addSleep, addExercise);
+        addChoice.getChildren().addAll(buttons);
 
-        // Set spacing between buttons
-        addChoice.setSpacing(10);
-        addChoice.getChildren().addAll(addMeal, addSleep, addExercise);
+
 
         return addChoice;
     }

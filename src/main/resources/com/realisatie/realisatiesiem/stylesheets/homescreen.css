@@ -1,5 +1,5 @@
 #logo {
-    -fx-background-color: #73b626;
+    -fx-background-color: #3fb4cb;
 }
 
 #systemname {
@@ -10,14 +10,14 @@
 
 #header {
     -fx-border-width: 0 0 3 0; /* top right bottom left */
-    -fx-background-color: #73b626;
-    -fx-border-color: #507a1b;
+    -fx-background-color: #3fb4cb;
+    -fx-border-color: #3fb4cd;
 }
 
 #navbar {
     -fx-border-width: 0 3 0 0; /* top right bottom left */
-    -fx-background-color: #73b626;
-    -fx-border-color: #507a1b;
+    -fx-background-color: #3fb4cb;
+    -fx-border-color: #3fb4cd;
 }
 
 #navitems {
@@ -35,7 +35,7 @@
 #meals, #sleep, #exercises {
     -fx-background-color: #ffffff;
     -fx-background-radius: 10;
-    -fx-border-color: #507a1b;
+    -fx-border-color: #3fb4cd;
     -fx-border-width: 5;
     -fx-border-radius: 10;
 
@@ -43,12 +43,14 @@
 
 #userinfo {
     -fx-background-image: url("../images/homescreen-background.jpg");
-    /*-fx-background-repeat: stretch;*/
+
 }
 
 .scroll-bar:vertical {
     -fx-opacity: 0;
 }
+
+
 
 .headertext {
     -fx-font-size: 35px;
