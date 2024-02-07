@@ -5,10 +5,7 @@ import com.realisatie.realisatiesiem.classes.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -42,35 +39,35 @@ public class UDExerciseScreen {
     private FlowPane getForm() {
         FlowPane content = new FlowPane();
         content.setAlignment(Pos.CENTER);
-        content.setHgap(10);
-        content.setVgap(10);
-        content.setPadding(new Insets(25, 25, 25, 25));
+        content.setPadding(new Insets(200, 0, 0, 500));
 
         VBox form = new VBox(10);
         form.setId("form");
-        form.setAlignment(Pos.CENTER);
-        form.setPadding(new Insets(25, 25, 25, 25));
 
         Label nameLabel = new Label("Exercise Name:");
+        nameLabel.getStyleClass().add("labels");
         TextField nameTextField = new TextField(exerciseName);
 
         Label muscleGroupLabel = new Label("Muscle Group:");
+        muscleGroupLabel.getStyleClass().add("labels");
         ComboBox<String> muscleGroupComboBox = new ComboBox<>();
         muscleGroupComboBox.getItems().addAll("Chest", "Legs", "Arms", "Back", "Core", "Shoulders");
         muscleGroupComboBox.setValue(muscleGroup);
 
         Label setsLabel = new Label("Sets:");
+        setsLabel.getStyleClass().add("labels");
         TextField setsTextField = new TextField(String.valueOf(sets));
 
         Label repsLabel = new Label("Reps:");
+        repsLabel.getStyleClass().add("labels");
         TextField repsTextField = new TextField(String.valueOf(reps));
 
         HBox buttonsBox = new HBox(10);
         buttonsBox.setAlignment(Pos.CENTER);
+
         Button updateButton = new Button("Update");
         updateButton.setOnAction(e -> {
-            updateExercise(nameTextField.getText(), muscleGroupComboBox.getValue(), Integer.parseInt(setsTextField.getText()), Integer.parseInt(repsTextField.getText()));
-            showHomeScreen();
+            updateExercise(nameTextField.getText(), muscleGroupComboBox.getValue(), setsTextField.getText(), repsTextField.getText());;
         });
 
         Button deleteButton = new Button("Delete");
@@ -91,21 +88,38 @@ public class UDExerciseScreen {
         return content;
     }
 
-    private void updateExercise(String newName, String newMuscleGroup, int newSets, int newReps) {
+    private void updateExercise(String newName, String newMuscleGroup, String setsText, String repsText) {
+        // Check if any of the required fields are empty
+        if (newName.isEmpty() || newMuscleGroup.isEmpty() || setsText.isEmpty() || repsText.isEmpty()) {
+            // Show an alert indicating the missing fields
+            showAlert("Error", "Please fill in all fields.");
+            return;
+        }
+
         try {
+            // Parse text fields to integers
+            int newSets = Integer.parseInt(setsText);
+            int newReps = Integer.parseInt(repsText);
+
+            // Update exercise in the database
             Connection connection = Application.connection.getConnection();
             Statement statement = connection.createStatement();
             String query = "UPDATE exercise SET name = '" + newName + "', muscle_group = '" + newMuscleGroup + "', sets = " + newSets + ", reps = " + newReps + " WHERE name = '" + exerciseName + "'";
             int rowsAffected = statement.executeUpdate(query);
             if (rowsAffected > 0) {
                 System.out.println("Exercise updated successfully.");
+                showHomeScreen(); // Only navigate to home screen if there are no errors
             } else {
                 System.out.println("Failed to update exercise.");
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the exception appropriately
+        } catch (NumberFormatException e) {
+            // Show an alert if the user entered invalid numeric values for sets or reps
+            showAlert("Error", "Please enter valid numeric values for Sets and Reps.");
         }
     }
+
 
     private void deleteExercise() {
         try {
@@ -122,6 +136,16 @@ public class UDExerciseScreen {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+
 
     public Scene getScene() {
         return scene;

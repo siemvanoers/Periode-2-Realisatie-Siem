@@ -26,7 +26,6 @@ public class DatabaseConn {
 
         try {
             this.connection = DriverManager.getConnection(url, this.properties);
-            System.out.println("Connection to MySQL database established");
             System.out.println(this.connection);
         } catch(SQLException ex) {
             this.connection = null;

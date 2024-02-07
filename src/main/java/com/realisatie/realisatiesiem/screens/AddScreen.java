@@ -187,19 +187,24 @@ public class AddScreen {
             // Validate fields
             if (name.trim().isEmpty() || type == null || caloriesText.trim().isEmpty() ||
                     proteinText.trim().isEmpty() || fatsText.trim().isEmpty() || carbsText.trim().isEmpty()) {
-                // Show alert for missing or invalid data
+                // Show alert for missing data
                 showAlert("Error", "Please fill in all fields.");
             } else {
-                // Parse text fields to integers
-                int calories = Integer.parseInt(caloriesText);
-                int protein = Integer.parseInt(proteinText);
-                int fats = Integer.parseInt(fatsText);
-                int carbs = Integer.parseInt(carbsText);
+                try {
+                    // Parse text fields to integers
+                    int calories = Integer.parseInt(caloriesText);
+                    int protein = Integer.parseInt(proteinText);
+                    int fats = Integer.parseInt(fatsText);
+                    int carbs = Integer.parseInt(carbsText);
 
-                // Call a method to insert data into the database
-                addMealToDatabase(currentUser.getId(), name, type, calories, protein, fats, carbs);
+                    // Call a method to insert data into the database
+                    addMealToDatabase(currentUser.getId(), name, type, calories, protein, fats, carbs);
 
-                showHomeScreen();
+                    showHomeScreen();
+                } catch (NumberFormatException e) {
+                    // Show alert for wrong data type
+                    showAlert("Error", "Please enter valid numeric values for Calories, Protein, Fats, and Carbs.");
+                }
             }
         });
 
@@ -257,18 +262,24 @@ public class AddScreen {
 
             // Validate fields
             if (quality == null || durationText.trim().isEmpty() || date == null) {
-                // Show alert for missing or invalid data
+                // Show alert for missing data
                 showAlert("Error", "Please fill in all fields.");
             } else {
-                // Parse text fields to integers
-                int duration = Integer.parseInt(durationText);
+                try {
+                    // Parse text field to integer
+                    int duration = Integer.parseInt(durationText);
 
-                // Call a method to insert sleep data into the database
-                addSleepToDatabase(currentUser.getId(), quality, duration, date.toString());
+                    // Call a method to insert sleep data into the database
+                    addSleepToDatabase(currentUser.getId(), quality, duration, date.toString());
 
-                showHomeScreen();
+                    showHomeScreen();
+                } catch (NumberFormatException e) {
+                    // Show alert for wrong data type
+                    showAlert("Error", "Please enter a valid numeric value for Duration.");
+                }
             }
         });
+
 
 
         sleepForm.getChildren().addAll(txtQuality, txtDuration, txtDate, buttons);
@@ -329,17 +340,22 @@ public class AddScreen {
 
             // Validate fields
             if (name.isEmpty() || muscleGroup == null || setsText.trim().isEmpty() || repsText.trim().isEmpty()) {
-                // Show alert for missing or invalid data
+                // Show alert for missing data
                 showAlert("Error", "Please fill in all fields.");
             } else {
-                // Parse text fields to integers
-                int sets = Integer.parseInt(setsText);
-                int reps = Integer.parseInt(repsText);
+                try {
+                    // Parse text fields to integers
+                    int sets = Integer.parseInt(setsText);
+                    int reps = Integer.parseInt(repsText);
 
-                // Call a method to insert exercise data into the database
-                addExerciseToDatabase(currentUser.getId(), name, muscleGroup, sets, reps);
+                    // Call a method to insert exercise data into the database
+                    addExerciseToDatabase(currentUser.getId(), name, muscleGroup, sets, reps);
 
-                showHomeScreen();
+                    showHomeScreen();
+                } catch (NumberFormatException e) {
+                    // Show alert for wrong data type
+                    showAlert("Error", "Please enter valid numeric values for Sets and Reps.");
+                }
             }
         });
 

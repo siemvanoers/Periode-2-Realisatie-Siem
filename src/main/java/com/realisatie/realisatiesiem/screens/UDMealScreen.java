@@ -5,10 +5,7 @@ import com.realisatie.realisatiesiem.classes.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -46,47 +43,44 @@ public class UDMealScreen {
     private FlowPane getForm() {
         FlowPane content = new FlowPane();
         content.setAlignment(Pos.CENTER);
-        content.setPadding(new Insets(25, 25, 25, 25));
+        content.setPadding(new Insets(200, 0, 0, 550));
 
         VBox form = new VBox(10);
         form.setId("form");
-        form.setAlignment(Pos.CENTER);
-        form.setPadding(new Insets(25, 25, 25, 25));
 
         Label nameLabel = new Label("Meal Name:");
+        nameLabel.getStyleClass().add("labels");
         TextField nameTextField = new TextField(mealName);
 
         Label typeLabel = new Label("Meal Type:");
+        typeLabel.getStyleClass().add("labels");
         ComboBox<String> typeComboBox = new ComboBox<>();
         typeComboBox.getItems().addAll("Breakfast", "Snack", "Lunch", "Dinner");
         typeComboBox.setValue(mealType);
 
         Label caloriesLabel = new Label("Calories:");
+        caloriesLabel.getStyleClass().add("labels");
         TextField caloriesTextField = new TextField(String.valueOf(calories));
 
         Label proteinLabel = new Label("Protein:");
+        proteinLabel.getStyleClass().add("labels");
         TextField proteinTextField = new TextField(String.valueOf(protein));
 
         Label fatsLabel = new Label("Fats:");
+        fatsLabel.getStyleClass().add("labels");
         TextField fatsTextField = new TextField(String.valueOf(fats));
 
         Label carbsLabel = new Label("Carbs:");
+        carbsLabel.getStyleClass().add("labels");
         TextField carbsTextField = new TextField(String.valueOf(carbs));
 
         HBox buttonsBox = new HBox(10);
         buttonsBox.setAlignment(Pos.CENTER);
         Button updateButton = new Button("Update");
         updateButton.setOnAction(e -> {
-            updateMeal(
-                    nameTextField.getText(),
-                    typeComboBox.getValue(),
-                    Integer.parseInt(caloriesTextField.getText()),
-                    Integer.parseInt(proteinTextField.getText()),
-                    Integer.parseInt(fatsTextField.getText()),
-                    Integer.parseInt(carbsTextField.getText()));
-
-            showHomeScreen();
+            updateMeal(nameTextField.getText(), typeComboBox.getValue(), caloriesTextField.getText(), proteinTextField.getText(), fatsTextField.getText(), carbsTextField.getText());
         });
+
         Button deleteButton = new Button("Delete");
         deleteButton.setOnAction(e -> {
             deleteMeal();
@@ -105,20 +99,40 @@ public class UDMealScreen {
         return content;
     }
 
-    private void updateMeal(String newName, String newType, int newCalories, int newProtein, int newFats, int newCarbs) {
-        String query = "UPDATE meal SET name = '" + newName + "', type = '" + newType + "', calories = " + newCalories +
-                ", protein = " + newProtein + ", fats = " + newFats + ", carbs = " + newCarbs +
-                " WHERE name = '" + mealName + "' AND user_id = " + currentUser.getId();
+    private void updateMeal(String newName, String newType, String newCalories, String newProtein, String newFats, String newCarbs) {
+        // Check if any of the required fields are empty
+        if (newName.isEmpty() || newType.isEmpty() || newCalories.isEmpty() || newProtein.isEmpty() || newFats.isEmpty() || newCarbs.isEmpty()) {
+            // Show an alert indicating the missing fields
+            showAlert("Error", "Please fill in all fields.");
+            return;
+        }
 
-        try (Statement statement = Application.connection.getConnection().createStatement()) {
-            int rowsAffected = statement.executeUpdate(query);
-            if (rowsAffected > 0) {
-                System.out.println("Meal updated successfully!");
-            } else {
-                System.out.println("Failed to update meal.");
+        try {
+            // Parse text fields to integers
+            int calories = Integer.parseInt(newCalories);
+            int protein = Integer.parseInt(newProtein);
+            int fats = Integer.parseInt(newFats);
+            int carbs = Integer.parseInt(newCarbs);
+
+            // Update meal in the database
+            String query = "UPDATE meal SET name = '" + newName + "', type = '" + newType + "', calories = " + calories +
+                    ", protein = " + protein + ", fats = " + fats + ", carbs = " + carbs +
+                    " WHERE name = '" + mealName + "' AND user_id = " + currentUser.getId();
+
+            try (Statement statement = Application.connection.getConnection().createStatement()) {
+                int rowsAffected = statement.executeUpdate(query);
+                if (rowsAffected > 0) {
+                    System.out.println("Meal updated successfully!");
+                    showHomeScreen(); // Only navigate to home screen if there are no errors
+                } else {
+                    System.out.println("Failed to update meal.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle the exception appropriately
             }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception appropriately
+        } catch (NumberFormatException e) {
+            // Show an alert if the user entered invalid numeric values for calories, protein, fats, or carbs
+            showAlert("Error", "Please enter valid numeric values for Calories, Protein, Fats, and Carbs.");
         }
     }
     private void deleteMeal() {
@@ -134,6 +148,13 @@ public class UDMealScreen {
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
+    }
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public Scene getScene() {

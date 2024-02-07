@@ -26,6 +26,11 @@ public class Application extends javafx.application.Application {
         mainStage.setScene(scenes.get("loginscreen"));
         mainStage.setWidth(windowSize[0]);
         mainStage.setHeight(windowSize[1]);
+
+        mainStage.setFullScreen(false);
+        mainStage.setMaximized(false);
+        mainStage.setResizable(false);
+
         mainStage.show();
     }
 

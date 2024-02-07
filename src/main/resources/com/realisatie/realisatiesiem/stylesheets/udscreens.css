@@ -11,3 +11,8 @@
     -fx-border-radius: 10;
     -fx-padding: 5px;
 }
+
+.labels {
+    -fx-font-weight: bold;
+    -fx-fill: #000000;
+}
