@@ -26,7 +26,6 @@ public class DatabaseConn {
 
         try {
             this.connection = DriverManager.getConnection(url, this.properties);
-            System.out.println(this.connection);
         } catch(SQLException ex) {
             this.connection = null;
             System.out.println("An error occurred while connecting MySQL database");

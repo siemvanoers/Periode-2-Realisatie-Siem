@@ -173,7 +173,7 @@ public class AddScreen {
             showAddScreen();
         });
 
-        buttons.getChildren().addAll(sendForm, cancelForm);
+        buttons.getChildren().addAll(cancelForm, sendForm);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box
@@ -252,7 +252,7 @@ public class AddScreen {
             showAddScreen();
         });
 
-        buttons.getChildren().addAll(sendForm, cancelForm);
+        buttons.getChildren().addAll(cancelForm, sendForm);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from combo box, text fields, and date picker
@@ -279,8 +279,6 @@ public class AddScreen {
                 }
             }
         });
-
-
 
         sleepForm.getChildren().addAll(txtQuality, txtDuration, txtDate, buttons);
 
@@ -329,7 +327,7 @@ public class AddScreen {
             showAddScreen();
         });
 
-        buttons.getChildren().addAll(sendForm, cancelForm);
+        buttons.getChildren().addAll(cancelForm, sendForm);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box

@@ -57,7 +57,7 @@ public class LoginScreen {
             loginform.getChildren().add(getRegisterForm());
         });
 
-        links.getChildren().addAll(loginButton, register);
+        links.getChildren().addAll(register, loginButton);
         loginform.getChildren().addAll(login, username, password, links);
         container.getChildren().add(loginform);
 

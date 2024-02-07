@@ -81,7 +81,7 @@ public class UDExerciseScreen {
             showHomeScreen();
         });
 
-        buttonsBox.getChildren().addAll(updateButton, deleteButton, backButton);
+        buttonsBox.getChildren().addAll(backButton, deleteButton, updateButton);
         form.getChildren().addAll(nameLabel, nameTextField, muscleGroupLabel, muscleGroupComboBox, setsLabel, setsTextField, repsLabel, repsTextField, buttonsBox);
         content.getChildren().addAll(form);
 

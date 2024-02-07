@@ -79,7 +79,7 @@ public class UDSleepScreen {
         });
 
 
-        buttonsBox.getChildren().addAll(updateButton, deleteButton, backButton);
+        buttonsBox.getChildren().addAll(backButton, deleteButton, updateButton);
         form.getChildren().addAll(qualityLabel, qualityComboBox, durationLabel, durationTextField, sleepDateLabel, sleepDatePicker, buttonsBox);
         content.getChildren().addAll(form);
 
