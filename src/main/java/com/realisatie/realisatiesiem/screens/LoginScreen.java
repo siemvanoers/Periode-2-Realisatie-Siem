@@ -162,7 +162,7 @@ public class LoginScreen {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        showHomeScreen(new User(username.getText(), password.getText(), firstName.getText(), lastName.getText(), 0));
+        showLoginScreen();
     }
 
     private boolean isUsernameTaken(String username) {
@@ -194,4 +194,8 @@ public class LoginScreen {
     private void showHomeScreen(User user) {
         Application.mainStage.setScene(new HomeScreen(user).getScene());
     }
+    private void showLoginScreen() {
+        Application.mainStage.setScene(new LoginScreen().getScene());
+    }
 }
+

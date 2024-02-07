@@ -1,0 +1,13 @@
+#root {
+    -fx-background-image: url("../images/background.jpg");
+    -fx-background-size: cover;
+}
+
+#form {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-color: #39a7be;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+    -fx-padding: 5px;
+}

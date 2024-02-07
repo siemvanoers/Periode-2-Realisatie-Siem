@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -172,6 +171,9 @@ public class HomeScreen {
         mealItem.getStyleClass().add("items");
         mealItem.setAlignment(Pos.CENTER);
         mealItem.setSpacing(10);
+        mealItem.setOnMouseClicked(e -> {
+            showUDMealScreen(name, type, calories, protein, fats, carbs);
+        });
 
         Text nameLabel = new Text("Name: " + name);
         nameLabel.getStyleClass().add("labels");
@@ -240,6 +242,9 @@ public class HomeScreen {
         sleepItem.getStyleClass().add("items");
         sleepItem.setAlignment(Pos.CENTER);
         sleepItem.setSpacing(10);
+        sleepItem.setOnMouseClicked(e -> {
+            showUDSleepScreen(quality, duration, sleepDate);
+        });
 
         Text qualityLabel = new Text("Quality: " + quality);
         qualityLabel.getStyleClass().add("labels");
@@ -300,6 +305,9 @@ public class HomeScreen {
         exerciseItem.getStyleClass().add("items");
         exerciseItem.setAlignment(Pos.CENTER);
         exerciseItem.setSpacing(10);
+        exerciseItem.setOnMouseClicked(e -> {
+            showUDExerciseScreen(exerciseName, muscleGroup, sets, reps);
+        });
 
         Text exerciseLabel = new Text("Exercise: " + exerciseName);
         exerciseLabel.getStyleClass().add("labels");
@@ -319,7 +327,6 @@ public class HomeScreen {
     }
 
 
-
     public Scene getScene() {
         return scene;
     }
@@ -331,5 +338,19 @@ public class HomeScreen {
     private void showHomeScreen() {
         Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
     }
+
+    private void showUDMealScreen(String mealName, String mealType, int calories, int protein, int carbs, int fats) {
+        Application.mainStage.setScene(new UDMealScreen(currentUser, mealName, mealType, calories, protein, carbs, fats).getScene());
+    }
+
+    private void showUDSleepScreen(String quality, int duration, String sleepDate) {
+        Application.mainStage.setScene(new UDSleepScreen(currentUser, quality, duration, sleepDate).getScene());
+    }
+
+    private void showUDExerciseScreen(String exerciseName, String muscleGroup, int sets, int reps) {
+        Application.mainStage.setScene(new UDExerciseScreen(currentUser, exerciseName, muscleGroup, sets, reps).getScene());
+    }
+
+
 
 }

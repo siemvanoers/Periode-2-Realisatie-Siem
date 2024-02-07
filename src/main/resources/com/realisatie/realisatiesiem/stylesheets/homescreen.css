@@ -1,5 +1,7 @@
 #logo {
     -fx-background-color: #3fb4cb;
+    -fx-border-width: 0 3 3 0;
+    -fx-border-color: #000000;
 }
 
 #systemname {
@@ -9,13 +11,13 @@
 }
 
 #header {
-    -fx-border-width: 0 0 5 0; /* top right bottom left */
+    -fx-border-width: 0 0 3 0; /* top right bottom left */
     -fx-background-color: #3fb4cb;
     -fx-border-color: #000000;
 }
 
 #navbar {
-    -fx-border-width: 0 5 0 0; /* top right bottom left */
+    -fx-border-width: 0 3 0 0; /* top right bottom left */
     -fx-background-color: #3fb4cb;
     -fx-border-color: #000000;
 }
@@ -31,8 +33,12 @@
     -fx-font-weight: bold;
     -fx-background-color: #39a7be;
     -fx-fill: #000000;
-    -fx-border-width: 1;
+    -fx-border-width: 1 0 1 0;
     -fx-border-color: #000000;
+}
+
+#navitems:hover {
+    -fx-cursor: hand;
 }
 
 #meals, #sleep, #exercises {
@@ -45,15 +51,13 @@
 }
 
 #userinfo {
-    -fx-background-image: url("../images/homescreen-background.jpg");
+    -fx-background-image: url("../images/background.jpg");
 
 }
 
 .scroll-bar:vertical {
     -fx-opacity: 0;
 }
-
-
 
 .headertext {
     -fx-font-size: 35px;
@@ -69,7 +73,10 @@
     -fx-border-radius: 10;
     -fx-border-insets: 0;
     -fx-padding: 2;
+}
 
+.items:hover {
+    -fx-cursor: hand;
 }
 
 .labels {

@@ -109,7 +109,7 @@ public class AddScreen {
     private FlowPane getAddChoice() {
         FlowPane addChoice = new FlowPane();
         addChoice.setId("addchoice");
-        addChoice.setPadding(new Insets(250, 0, 0, 500));
+        addChoice.setPadding(new Insets(250, 0, 0, 525));
 
         VBox buttons = new VBox(5);
         buttons.setId("buttons");
