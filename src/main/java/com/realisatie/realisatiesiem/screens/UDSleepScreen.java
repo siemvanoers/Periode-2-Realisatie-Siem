@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 
 public class UDSleepScreen {
+    // Instance variables
     private final Scene scene;
     private final User currentUser;
     private final String quality;
@@ -21,6 +22,7 @@ public class UDSleepScreen {
     private final String sleepDate;
     private DatePicker sleepDatePicker;
 
+    // Constructor
     public UDSleepScreen(User currentUser, String quality, int duration, String sleepDate) {
         this.currentUser = currentUser;
         this.quality = quality;
@@ -36,6 +38,7 @@ public class UDSleepScreen {
         root.getChildren().add(getForm());
     }
 
+    // Method to create and configure the form
     private FlowPane getForm() {
         FlowPane content = new FlowPane();
         content.setAlignment(Pos.CENTER);
@@ -46,6 +49,7 @@ public class UDSleepScreen {
         VBox form = new VBox(8);
         form.setId("form");
 
+        // Form components
         Label qualityLabel = new Label("Quality:");
         qualityLabel.getStyleClass().add("labels");
         ComboBox<String> qualityComboBox = new ComboBox<>();
@@ -78,7 +82,6 @@ public class UDSleepScreen {
             showHomeScreen();
         });
 
-
         buttonsBox.getChildren().addAll(backButton, deleteButton, updateButton);
         form.getChildren().addAll(qualityLabel, qualityComboBox, durationLabel, durationTextField, sleepDateLabel, sleepDatePicker, buttonsBox);
         content.getChildren().addAll(form);
@@ -86,6 +89,7 @@ public class UDSleepScreen {
         return content;
     }
 
+    // Method to update sleep record
     private void updateSleep(String newQuality, String newDuration, String newSleepDate) {
         // Check if any of the required fields are empty
         if (newQuality.isEmpty() || newDuration.isEmpty() || newSleepDate.isEmpty()) {
@@ -121,7 +125,7 @@ public class UDSleepScreen {
         }
     }
 
-
+    // Method to delete sleep record
     private void deleteSleep() {
         String query = "DELETE FROM sleep WHERE quality = '" + quality + "' AND duration = " + duration +
                 " AND sleep_date = '" + sleepDate + "' AND user_id = " + currentUser.getId();
@@ -137,6 +141,8 @@ public class UDSleepScreen {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
+
+    // Method to display an alert
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -145,10 +151,12 @@ public class UDSleepScreen {
         alert.showAndWait();
     }
 
+    // Method to retrieve the scene
     public Scene getScene() {
         return scene;
     }
 
+    // Method to navigate to the home screen
     private void showHomeScreen() {
         Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
     }

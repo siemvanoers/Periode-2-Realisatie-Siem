@@ -10,11 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce278ec3-6856-40d3-937e-747840dba716" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/realisatie_siem_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/realisatie_siem_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/realisatie_siem_jar/realisatie-siem.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/realisatie_siem_jar/realisatie-siem.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/DatabaseConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/DatabaseConn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/AddScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/AddScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/HomeScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/HomeScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/LoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/LoginScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDExerciseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDExerciseScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDMealScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDMealScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDSleepScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDSleepScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +79,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JAR Application.JAR">
+  <component name="RunManager" selected="Application.Runner">
     <configuration name="Runner" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.realisatie.realisatiesiem.Application" />
       <module name="realisatie-siem" />
@@ -135,7 +139,9 @@
       <workItem from="1707304506501" duration="16639000" />
       <workItem from="1707333547805" duration="739000" />
       <workItem from="1707393945337" duration="3131000" />
-      <workItem from="1707398844959" duration="1129000" />
+      <workItem from="1707398844959" duration="1311000" />
+      <workItem from="1707401638329" duration="610000" />
+      <workItem from="1707406382742" duration="1869000" />
     </task>
     <servers />
   </component>

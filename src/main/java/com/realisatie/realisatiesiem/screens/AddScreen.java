@@ -24,22 +24,27 @@ public class AddScreen {
     private final Scene scene;
     private final User currentUser;
 
+    // Constructor to initialize the AddScreen with the current user
     public AddScreen(User currentUser) {
         this.currentUser = currentUser;
         Pane root = new Pane();
         GridPane content = new GridPane();
 
+        // Add logo, header, navbar, and addChoice to the content grid pane
         content.add(getLogo(), 0, 0);
         content.add(getHeader(), 1, 0);
         content.add(getNavbar(), 0, 1);
         content.add(getAddChoice(), 1, 1);
 
         root.getChildren().addAll(content);
+        // Create a scene with the root pane and set its size
         scene = new Scene(root, Application.windowSize[0], Application.windowSize[1]);
 
+        // Add CSS stylesheet to the scene
         scene.getStylesheets().add(Application.class.getResource("stylesheets/addscreen.css").toString());
     }
 
+    // Method to create the logo pane
     private FlowPane getLogo() {
         FlowPane logo = new FlowPane();
         logo.setAlignment(Pos.CENTER);
@@ -55,6 +60,7 @@ public class AddScreen {
         return logo;
     }
 
+    // Method to create the header pane
     private FlowPane getHeader() {
         FlowPane header = new FlowPane();
         header.setId("header");
@@ -69,6 +75,7 @@ public class AddScreen {
         return header;
     }
 
+    // Method to create the navigation bar pane
     private Pane getNavbar() {
         FlowPane navbar = new FlowPane();
         navbar.setId("navbar");
@@ -83,6 +90,7 @@ public class AddScreen {
         return navbar;
     }
 
+    // Method to generate navigation items for the navbar
     private FlowPane generateNavItems(String title) {
         FlowPane navItems = new FlowPane();
         navItems.setId("navitems");
@@ -90,6 +98,7 @@ public class AddScreen {
         navItems.setPrefSize(navWidth, 50);
         navItems.setAlignment(Pos.CENTER);
 
+        // Add event handler to navigate to home or add screen based on the clicked item
         navItems.setOnMouseClicked(e -> {
             if (title.equals("Home")) {
                 showHomeScreen();
@@ -99,13 +108,13 @@ public class AddScreen {
             }
         });
 
-
         Text txtNavItem = new Text(title);
         navItems.getChildren().add(txtNavItem);
 
         return navItems;
     }
 
+    // Method to create the add choice pane
     private FlowPane getAddChoice() {
         FlowPane addChoice = new FlowPane();
         addChoice.setId("addchoice");
@@ -115,6 +124,7 @@ public class AddScreen {
         buttons.setId("buttons");
         buttons.setAlignment(Pos.CENTER);
 
+        // Add buttons for adding meal, sleep, and exercise
         Button addMeal = new Button("Add Meal");
         addMeal.setOnAction(e -> {
             addChoice.getChildren().clear();
@@ -136,16 +146,16 @@ public class AddScreen {
         buttons.getChildren().addAll(addMeal, addSleep, addExercise);
         addChoice.getChildren().addAll(buttons);
 
-
-
         return addChoice;
     }
 
+    // Method to create the form for adding a meal
     private Pane addMealForm(User currentUser) {
         VBox mealForm = new VBox(10);
         mealForm.setId("mealform");
         mealForm.setAlignment(Pos.CENTER);
 
+        // Text fields and combo box for meal information
         TextField txtName = new TextField();
         txtName.setPromptText("Meal name: ");
 
@@ -173,21 +183,21 @@ public class AddScreen {
             showAddScreen();
         });
 
+        // Add event handler to send the form data for adding a meal
         buttons.getChildren().addAll(cancelForm, sendForm);
 
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box
             String name = txtName.getText();
-            String type = txtType.getValue(); // Assuming your ComboBox is of type String
+            String type = txtType.getValue();
             String caloriesText = txtCalories.getText();
             String proteinText = txtProtein.getText();
             String fatsText = txtFats.getText();
             String carbsText = txtCarbs.getText();
 
-            // Validate fields
+            // Validate fields and handle exceptions
             if (name.trim().isEmpty() || type == null || caloriesText.trim().isEmpty() ||
                     proteinText.trim().isEmpty() || fatsText.trim().isEmpty() || carbsText.trim().isEmpty()) {
-                // Show alert for missing data
                 showAlert("Error", "Please fill in all fields.");
             } else {
                 try {
@@ -200,9 +210,9 @@ public class AddScreen {
                     // Call a method to insert data into the database
                     addMealToDatabase(currentUser.getId(), name, type, calories, protein, fats, carbs);
 
+                    // Show home screen after adding meal
                     showHomeScreen();
                 } catch (NumberFormatException e) {
-                    // Show alert for wrong data type
                     showAlert("Error", "Please enter valid numeric values for Calories, Protein, Fats, and Carbs.");
                 }
             }
@@ -213,6 +223,7 @@ public class AddScreen {
         return mealForm;
     }
 
+    // Method to add a meal to the database
     private void addMealToDatabase(int userId, String name, String type, int calories, int protein, int fats, int carbs) {
         try (Connection connection = Application.connection.getConnection();
              Statement statement = connection.createStatement()) {
@@ -229,6 +240,7 @@ public class AddScreen {
         }
     }
 
+    // Method to create the form for adding sleep data
     private Pane addSleepForm(User currentUser) {
         VBox sleepForm = new VBox(8);
         sleepForm.setId("sleepform");
@@ -254,15 +266,15 @@ public class AddScreen {
 
         buttons.getChildren().addAll(cancelForm, sendForm);
 
+        // Add event handler to send the form data for adding sleep data
         sendForm.setOnAction(event -> {
             // Retrieve values from combo box, text fields, and date picker
-            String quality = txtQuality.getValue(); // Assuming your ComboBox is of type String
+            String quality = txtQuality.getValue();
             String durationText = txtDuration.getText();
             LocalDate date = txtDate.getValue();
 
-            // Validate fields
+            // Validate fields and handle exceptions
             if (quality == null || durationText.trim().isEmpty() || date == null) {
-                // Show alert for missing data
                 showAlert("Error", "Please fill in all fields.");
             } else {
                 try {
@@ -272,9 +284,9 @@ public class AddScreen {
                     // Call a method to insert sleep data into the database
                     addSleepToDatabase(currentUser.getId(), quality, duration, date.toString());
 
+                    // Show home screen after adding sleep data
                     showHomeScreen();
                 } catch (NumberFormatException e) {
-                    // Show alert for wrong data type
                     showAlert("Error", "Please enter a valid numeric value for Duration.");
                 }
             }
@@ -285,6 +297,7 @@ public class AddScreen {
         return sleepForm;
     }
 
+    // Method to add sleep data to the database
     private void addSleepToDatabase(int userId, String quality, int duration, String sleepDate) {
         try (Connection connection = Application.connection.getConnection();
              Statement statement = connection.createStatement()) {
@@ -301,6 +314,7 @@ public class AddScreen {
         }
     }
 
+    // Method to create the form for adding exercise data
     private Pane addExerciseForm(User currentUser) {
         VBox exerciseForm = new VBox(6);
         exerciseForm.setId("exerciseform");
@@ -329,16 +343,16 @@ public class AddScreen {
 
         buttons.getChildren().addAll(cancelForm, sendForm);
 
+        // Add event handler to send the form data for adding exercise data
         sendForm.setOnAction(event -> {
             // Retrieve values from text fields and combo box
             String name = txtName.getText();
-            String muscleGroup = txtMuscleGroup.getValue(); // Assuming your ComboBox is of type String
+            String muscleGroup = txtMuscleGroup.getValue();
             String setsText = txtSets.getText();
             String repsText = txtReps.getText();
 
-            // Validate fields
+            // Validate fields and handle exceptions
             if (name.isEmpty() || muscleGroup == null || setsText.trim().isEmpty() || repsText.trim().isEmpty()) {
-                // Show alert for missing data
                 showAlert("Error", "Please fill in all fields.");
             } else {
                 try {
@@ -349,9 +363,9 @@ public class AddScreen {
                     // Call a method to insert exercise data into the database
                     addExerciseToDatabase(currentUser.getId(), name, muscleGroup, sets, reps);
 
+                    // Show home screen after adding exercise data
                     showHomeScreen();
                 } catch (NumberFormatException e) {
-                    // Show alert for wrong data type
                     showAlert("Error", "Please enter valid numeric values for Sets and Reps.");
                 }
             }
@@ -362,6 +376,7 @@ public class AddScreen {
         return exerciseForm;
     }
 
+    // Method to add exercise data to the database
     private void addExerciseToDatabase(int userId, String name, String muscleGroup, int sets, int reps) {
         try (Connection connection = Application.connection.getConnection();
              Statement statement = connection.createStatement()) {
@@ -377,6 +392,8 @@ public class AddScreen {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
+
+    // Method to show an alert dialog
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -385,17 +402,18 @@ public class AddScreen {
         alert.showAndWait();
     }
 
-
+    // Method to get the scene
     public Scene getScene() {
         return scene;
     }
 
+    // Method to show the home screen
     private void showHomeScreen() {
         Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
     }
+
+    // Method to show the add screen
     private void showAddScreen() {
         Application.mainStage.setScene(new AddScreen(currentUser).getScene());
     }
 }
-
-

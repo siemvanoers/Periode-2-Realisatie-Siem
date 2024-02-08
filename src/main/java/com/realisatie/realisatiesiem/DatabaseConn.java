@@ -4,10 +4,11 @@ import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseConn {
+    // Instance variables
     private Connection connection;
-
     private final Properties properties;
 
+    // Constructor
     public DatabaseConn(String hostname, String port, String database, String username, String password) {
         this.properties = new Properties();
         this.properties.setProperty("hostname", hostname);
@@ -17,7 +18,8 @@ public class DatabaseConn {
         this.properties.setProperty("password", password);
     }
 
-    private void connection() {
+    // Method to establish a database connection
+    private void connect() {
         String url = "jdbc:mysql://%s:%s/%s".formatted(
                 this.properties.getProperty("hostname"),
                 this.properties.getProperty("port"),
@@ -26,18 +28,22 @@ public class DatabaseConn {
 
         try {
             this.connection = DriverManager.getConnection(url, this.properties);
-        } catch(SQLException ex) {
+        } catch (SQLException ex) {
             this.connection = null;
-            System.out.println("An error occurred while connecting MySQL database");
+            System.out.println("An error occurred while connecting to the MySQL database");
             System.out.println(ex.getMessage());
         }
     }
 
+    // Method to get the database connection
     public Connection getConnection() {
-        if(this.isConnected()) { this.connection(); }
+        if (this.isConnected()) {
+            this.connect();
+        }
         return this.connection;
     }
 
+    // Method to check if the connection is established
     public boolean isConnected() {
         try {
             return this.connection == null || this.connection.isClosed();
@@ -46,14 +52,12 @@ public class DatabaseConn {
         }
     }
 
+    // Method to execute a SQL query
     public ResultSet query(String query) throws SQLException {
-        if (this.connection == null)
-            this.connection();
-
+        if (this.connection == null) {
+            this.connect();
+        }
         Statement statement = this.connection.createStatement();
         return statement.executeQuery(query);
     }
-
-
 }
-

@@ -19,17 +19,22 @@ import java.sql.SQLException;
 
 import static com.realisatie.realisatiesiem.Application.connection;
 
-
+/**
+ * The LoginScreen class represents the screen where users can log in to the application.
+ */
 public class LoginScreen {
+    // Instance variable
     private final Scene scene;
 
+    /**
+     * Constructor for the LoginScreen class.
+     */
     public LoginScreen() {
-
         FlowPane container = new FlowPane();
         container.setMinSize(Application.windowSize[0], Application.windowSize[1]);
         container.setAlignment(Pos.CENTER);
 
-
+        // Create login form
         VBox loginform = new VBox(10);
         loginform.setId("loginform");
         loginform.setAlignment(Pos.CENTER);
@@ -65,6 +70,12 @@ public class LoginScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/loginscreen.css").toString());
     }
 
+    // Methods
+
+    /**
+     * Creates the registration form.
+     * @return VBox representing the registration form.
+     */
     private VBox getRegisterForm() {
         VBox registerForm = new VBox(10);
         registerForm.setAlignment(Pos.CENTER);
@@ -94,6 +105,11 @@ public class LoginScreen {
         return registerForm;
     }
 
+    /**
+     * Handles the login form submission.
+     * @param usernameField TextField for the username.
+     * @param passwordField PasswordField for the password.
+     */
     private void handleLoginForm(TextField usernameField, PasswordField passwordField) {
         String enteredUsername = usernameField.getText();
         String enteredPassword = passwordField.getText();
@@ -131,6 +147,10 @@ public class LoginScreen {
         }
     }
 
+    /**
+     * Retrieves users from the database.
+     * @return ResultSet representing the users.
+     */
     private ResultSet getUsers() {
         try {
             ResultSet user = Application.connection.query("SELECT * FROM user");
@@ -141,6 +161,13 @@ public class LoginScreen {
         }
     }
 
+    /**
+     * Handles the registration form submission.
+     * @param firstName TextField for the first name.
+     * @param lastName TextField for the last name.
+     * @param username TextField for the username.
+     * @param password PasswordField for the password.
+     */
     private void handleRegisterForm(TextField firstName, TextField lastName, TextField username, PasswordField password) {
         if (firstName.getText().isEmpty() || lastName.getText().isEmpty() || username.getText().isEmpty() || password.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Information incomplete", "Please fill in all fields");
@@ -165,6 +192,11 @@ public class LoginScreen {
         showLoginScreen();
     }
 
+    /**
+     * Checks if a username is already taken.
+     * @param username The username to check.
+     * @return boolean indicating if the username is taken.
+     */
     private boolean isUsernameTaken(String username) {
         String query = "SELECT * FROM user WHERE username = ?";
         try (PreparedStatement preparedStatement = connection.getConnection().prepareStatement(query)) {
@@ -178,6 +210,13 @@ public class LoginScreen {
         }
     }
 
+    /**
+     * Displays an alert dialog.
+     * @param type The type of alert.
+     * @param title The title of the alert.
+     * @param header The header text of the alert.
+     * @param content The content text of the alert.
+     */
     private void showAlert(Alert.AlertType type, String title, String header, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -186,16 +225,26 @@ public class LoginScreen {
         alert.showAndWait();
     }
 
-
+    /**
+     * Retrieves the scene associated with the LoginScreen.
+     * @return Scene representing the LoginScreen.
+     */
     public Scene getScene() {
         return scene;
     }
 
+    /**
+     * Navigates to the HomeScreen.
+     * @param user The user object representing the logged-in user.
+     */
     private void showHomeScreen(User user) {
         Application.mainStage.setScene(new HomeScreen(user).getScene());
     }
+
+    /**
+     * Navigates to the LoginScreen.
+     */
     private void showLoginScreen() {
         Application.mainStage.setScene(new LoginScreen().getScene());
     }
 }
-

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UDExerciseScreen {
+    // Instance variables
     private final Scene scene;
     private final User currentUser;
     private final String exerciseName;
@@ -21,6 +22,7 @@ public class UDExerciseScreen {
     private final int sets;
     private final int reps;
 
+    // Constructor
     public UDExerciseScreen(User currentUser, String exerciseName, String muscleGroup, int sets, int reps) {
         this.currentUser = currentUser;
         this.exerciseName = exerciseName;
@@ -28,14 +30,17 @@ public class UDExerciseScreen {
         this.sets = sets;
         this.reps = reps;
 
+        // Create root pane
         Pane root = new Pane();
         root.setId("root");
         root.getChildren().add(getForm());
 
+        // Create scene
         scene = new Scene(root, Application.windowSize[0], Application.windowSize[1]);
         scene.getStylesheets().add(Application.class.getResource("stylesheets/udscreens.css").toString());
     }
 
+    // Method to create and configure the form
     private FlowPane getForm() {
         FlowPane content = new FlowPane();
         content.setAlignment(Pos.CENTER);
@@ -44,6 +49,7 @@ public class UDExerciseScreen {
         VBox form = new VBox(10);
         form.setId("form");
 
+        // Form components
         Label nameLabel = new Label("Exercise Name:");
         nameLabel.getStyleClass().add("labels");
         TextField nameTextField = new TextField(exerciseName);
@@ -88,6 +94,7 @@ public class UDExerciseScreen {
         return content;
     }
 
+    // Method to update exercise details
     private void updateExercise(String newName, String newMuscleGroup, String setsText, String repsText) {
         // Check if any of the required fields are empty
         if (newName.isEmpty() || newMuscleGroup.isEmpty() || setsText.isEmpty() || repsText.isEmpty()) {
@@ -120,7 +127,7 @@ public class UDExerciseScreen {
         }
     }
 
-
+    // Method to delete the exercise
     private void deleteExercise() {
         try {
             Connection connection = Application.connection.getConnection();
@@ -137,6 +144,7 @@ public class UDExerciseScreen {
         }
     }
 
+    // Method to display an alert
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -145,11 +153,12 @@ public class UDExerciseScreen {
         alert.showAndWait();
     }
 
-
-
+    // Method to retrieve the scene
     public Scene getScene() {
         return scene;
     }
+
+    // Method to navigate to the home screen
     private void showHomeScreen() {
         Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
     }

@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UDMealScreen {
+    // Instance variables
     private final Scene scene;
     private final User currentUser;
     private final String mealName;
@@ -22,6 +23,7 @@ public class UDMealScreen {
     private final int fats;
     private final int carbs;
 
+    // Constructor
     public UDMealScreen(User currentUser, String mealName, String mealType, int calories, int protein, int fats, int carbs) {
         this.currentUser = currentUser;
         this.mealName = mealName;
@@ -40,6 +42,7 @@ public class UDMealScreen {
         scene.getStylesheets().add(Application.class.getResource("stylesheets/udscreens.css").toString());
     }
 
+    // Method to create and configure the form
     private FlowPane getForm() {
         FlowPane content = new FlowPane();
         content.setAlignment(Pos.CENTER);
@@ -48,6 +51,7 @@ public class UDMealScreen {
         VBox form = new VBox(10);
         form.setId("form");
 
+        // Form components
         Label nameLabel = new Label("Meal Name:");
         nameLabel.getStyleClass().add("labels");
         TextField nameTextField = new TextField(mealName);
@@ -99,6 +103,7 @@ public class UDMealScreen {
         return content;
     }
 
+    // Method to update meal details
     private void updateMeal(String newName, String newType, String newCalories, String newProtein, String newFats, String newCarbs) {
         // Check if any of the required fields are empty
         if (newName.isEmpty() || newType.isEmpty() || newCalories.isEmpty() || newProtein.isEmpty() || newFats.isEmpty() || newCarbs.isEmpty()) {
@@ -135,6 +140,8 @@ public class UDMealScreen {
             showAlert("Error", "Please enter valid numeric values for Calories, Protein, Fats, and Carbs.");
         }
     }
+
+    // Method to delete the meal
     private void deleteMeal() {
         String query = "DELETE FROM meal WHERE name = '" + mealName + "' AND user_id = " + currentUser.getId();
 
@@ -149,6 +156,8 @@ public class UDMealScreen {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
+
+    // Method to display an alert
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -157,12 +166,13 @@ public class UDMealScreen {
         alert.showAndWait();
     }
 
+    // Method to retrieve the scene
     public Scene getScene() {
         return scene;
     }
 
+    // Method to navigate to the home screen
     private void showHomeScreen() {
         Application.mainStage.setScene(new HomeScreen(currentUser).getScene());
     }
 }
-
