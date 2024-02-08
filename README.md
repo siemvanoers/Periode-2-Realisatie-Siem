@@ -41,3 +41,32 @@ Maintaining a healthy lifestyle is essential for overall well-being and longevit
 
 ## **Usage Guide**
 
+### **Login/Register**
+
+You start with logging into your already existing account or you can register one. You will have to provide your first name, last name, username and a password. Once you do that you are able to login into your account where you can start saving meals, sleep or exercises.
+
+### **Homescreen**
+
+Here you have an overview of all your saved meals, sleep and exercises. On this screen you have the option to go the add screen or to alter your existing data. You can do this by clicking on the data you want to change and you will be send to another screen.
+
+### **Add Data**
+
+Here you can easily add your date by pressing on the correct form. If you want to add a meal you press on that button and vice versa. You will have to fill in all of the field because you will get an error if you don't. You will also get an error if you are using text where there are supposed to be numbers.
+
+### **Update and Delete**
+
+You will get to this screen if you press on one of the items inside the homescreen. This screen will show everything that this item contains and you will be able to update/alter the item or you can simply remove it if perhaps you made a mistake. 
+
+## **Roadmap**
+
+For the future I might want to add some things to make the application more up to date with already existing applications.
+
+### **Here are some points**
+- Option to choose the food from a database instead of making it yourself
+- Option to count calories, fats, carbs and protein
+- Hashing the passwords for security
+- Make seperate pages for all the entity's
+- Make a profile page
+
+
+
