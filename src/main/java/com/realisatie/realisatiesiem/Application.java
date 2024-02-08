@@ -15,7 +15,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        connection = new DatabaseConn("localhost", "8889", "HFTSystem", "root", "root");
+        connection = new DatabaseConn("adainforma.tk", "3306", "bp2_hftsystem", "hftsystem", "4rnT46z7#");
         connection.getConnection();
 
         scenes.put("loginscreen", new LoginScreen().getScene());

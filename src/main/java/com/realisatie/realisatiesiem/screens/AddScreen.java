@@ -37,7 +37,7 @@ public class AddScreen {
         root.getChildren().addAll(content);
         scene = new Scene(root, Application.windowSize[0], Application.windowSize[1]);
 
-        scene.getStylesheets().add(Application.class.getResource("stylesheets/AddScreen.css").toString());
+        scene.getStylesheets().add(Application.class.getResource("stylesheets/addscreen.css").toString());
     }
 
     private FlowPane getLogo() {
