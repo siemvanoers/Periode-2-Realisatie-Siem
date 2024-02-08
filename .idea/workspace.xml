@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce278ec3-6856-40d3-937e-747840dba716" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/DatabaseConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/DatabaseConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/AddScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/AddScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/LoginScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/LoginScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDExerciseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDExerciseScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDMealScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDMealScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDSleepScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/realisatie/realisatiesiem/screens/UDSleepScreen.java" afterDir="false" />
-    </list>
+    <list default="true" id="ce278ec3-6856-40d3-937e-747840dba716" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +109,7 @@
       <workItem from="1706789616502" duration="2788000" />
       <workItem from="1706797230615" duration="878000" />
       <workItem from="1707304506501" duration="16639000" />
-      <workItem from="1707333547805" duration="611000" />
+      <workItem from="1707333547805" duration="739000" />
     </task>
     <servers />
   </component>
